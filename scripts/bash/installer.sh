@@ -175,6 +175,13 @@ Endpoint = $SERVER_ENDPOINT
 PersistentKeepalive = 25" > $HOME/$CLIENT_NAME-wg0.conf
 qrencode -t ansiutf8 -l L < $HOME/$CLIENT_NAME-wg0.conf
 
+    echo "_INTERFACE=wg0
+_VPN_NET=$PRIVATE_SUBNET
+_SERVER_PORT=$SERVER_PORT
+_SERVER_LISTEN=$SERVER_HOST:$SERVER_PORT
+_SERVER_PUBLIC_KEY=SERVER_PUBKEY
+_SERVER_PRIVATE_KEY=$SERVER_PRIVKEY" > ../data/wg.def
+
     ip address | grep -q wg0 && wg set wg0 peer "$CLIENT_PUBKEY" allowed-ips "$CLIENT_ADDRESS/32"
     echo "Client added, new configuration file --> $HOME/$CLIENT_NAME-wg0.conf"
 fi
