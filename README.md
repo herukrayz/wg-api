@@ -11,7 +11,7 @@ It's still a baby project but I plan on building it out into a full-featured RES
 Use a fresh Ubuntu 18.* install with up-to-date apt dependencies, with Node and NPM installed and Wireguard uninstalled.
 ```bash
 apt-get install nodejs npm -y
-git clone https://github.com/alectrocute/wg-api
+git clone https://github.com/herukrayz/wg-api
 cd wg-api
 npm install fastify fastify-static chalk ini
 cd ./scripts/bash
@@ -24,7 +24,7 @@ Then get your Wireguard® server up and running:
 
 ```bash
 cd ./wg-api/scripts/bash
-./wg.sh -i
+./wg.sh -g
 ```
 
 ## Running the server
