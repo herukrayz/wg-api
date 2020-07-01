@@ -1,7 +1,7 @@
 [Interface]
 Address = $_VPN_IP
 PrivateKey = $_PRIVATE_KEY
-DNS = 1.1.1.1, 1.0.0.1
+DNS = 9.9.9.9, 8.8.8.8
 
 [Peer]
 PublicKey = $_SERVER_PUBLIC_KEY
