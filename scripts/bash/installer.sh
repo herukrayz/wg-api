@@ -30,6 +30,10 @@ if [ "$( systemd-detect-virt )" == "openvz" ]; then
     exit
 fi
 
+if [ "$CLIENT_NAME" == "" ]; then
+     read -p "Private IP: " -e -i "10.9.0.0/22" PRIVATE_SUBNET
+fi
+
 apt-get install software-properties-common -y
 add-apt-repository ppa:wireguard/wireguard -y
 apt update
