@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd `dirname ${BASH_SOURCE[0]}`
+
 function get_free_udp_port
 {
     local port=$(shuf -i 2000-65000 -n 1)
@@ -50,4 +52,4 @@ _VPN_NET=$PRIVATE_SUBNET
 _SERVER_PORT=$SERVER_PORT
 _SERVER_LISTEN=$SERVER_HOST:$SERVER_PORT
 _SERVER_PUBLIC_KEY=$SERVER_PUBKEY
-_SERVER_PRIVATE_KEY=$SERVER_PRIVKEY" > /root/wg-api/scripts/data/wg.def
+_SERVER_PRIVATE_KEY=$SERVER_PRIVKEY" > ../data/wg.def
