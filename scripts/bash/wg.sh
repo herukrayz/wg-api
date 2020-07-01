@@ -115,26 +115,6 @@ del_user() {
     rm -rf $userdir && echo -e "\e[44m[wg-api cli]\e[0m Revoked $user"
 }
 
-generate_and_install_server_config_file() {
-    local template_file=${SERVER_TPL_FILE}
-    local ip
-
-    # server config file
-    eval "echo \"$(cat "${template_file}")\"" > $WG_TMP_CONF_FILE
-    while read user vpn_ip public_key; do
-        ip=${vpn_ip%/*}/32
-        if [[ ! -z "$route" ]]; then
-            ip="0.0.0.0/0,::/0"
-        fi
-        cat >> $WG_TMP_CONF_FILE <<EOF
-[Peer]
-PublicKey = $public_key
-AllowedIPs = $ip
-EOF
-    done < ${SAVED_FILE}
-    \cp -f $WG_TMP_CONF_FILE $WG_CONF_FILE
-}
-
 clear_all() {
     local interface=$_INTERFACE
     wg-quick down $interface
@@ -143,8 +123,6 @@ clear_all() {
 }
 
 do_user() {
-    generate_cidr_ip_file_if
-
     if [[ $action == "-a" ]]; then
         if [[ -d $user ]]; then
             echo "$user exist"
@@ -154,8 +132,6 @@ do_user() {
     elif [[ $action == "-d" ]]; then
         del_user $user
     fi
-
-    generate_and_install_server_config_file
 }
 
 init_server() {
