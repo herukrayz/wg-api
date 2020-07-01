@@ -7,8 +7,6 @@ CLIENT_TPL_FILE=../data/client.conf.tpl
 SERVER_TPL_FILE=../data/server.conf.tpl
 SAVED_FILE=../data/tmp/saved.tmp
 AVAILABLE_IP_FILE=../data/tmp/available_ip.tmp
-WG_TMP_CONF_FILE=../data/tmp/$_INTERFACE.conf.tmp
-WG_CONF_FILE="/etc/wireguard/$_INTERFACE.conf"
 
 dec2ip() {
     local delim=''
